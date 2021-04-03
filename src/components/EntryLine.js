@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Grid, Segment, Icon } from 'semantic-ui-react'
+import ModalEdit from './ModalEdit'
 
-const EntryLine = ({description, value, isExpense="false"}) => {
+const EntryLine = ({id, description, value, deleteEntry, isExpense, editEntry , setIsOpen, isOpen})=> {
+
+  
+
     return (
+      <>
         <Segment color={isExpense ? 'red' : 'green'}>
         <Grid columns={3} textAlign="right">
           <Grid.Row>
@@ -13,12 +18,14 @@ const EntryLine = ({description, value, isExpense="false"}) => {
               ${value}
             </Grid.Column>
             <Grid.Column width={3}>
-              <Icon name="edit" bordered/>
-              <Icon name="trash" bordered/>
+              <Icon name="edit" bordered onClick={()=>editEntry(id)}/>
+              <Icon name="trash" bordered onClick={()=>deleteEntry(id)}/>
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </Segment>
+      
+      </>
     )
 }
 
