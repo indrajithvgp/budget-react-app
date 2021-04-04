@@ -1,11 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Grid, Segment, Icon } from 'semantic-ui-react'
-import ModalEdit from './ModalEdit'
+import {useDispatch} from 'react-redux'
+import {removeEntry} from '../redux/actions/entriesActions'
+import {openModal} from '../redux/actions/modalActions'
 
-const EntryLine = ({id, description, value, deleteEntry, isExpense, editEntry , setIsOpen, isOpen})=> {
+const EntryLine = ({id, description, value, isExpense})=> {
 
-  
-
+    const dispatch = useDispatch()
     return (
       <>
         <Segment color={isExpense ? 'red' : 'green'}>
@@ -18,8 +19,8 @@ const EntryLine = ({id, description, value, deleteEntry, isExpense, editEntry , 
               ${value}
             </Grid.Column>
             <Grid.Column width={3}>
-              <Icon name="edit" bordered onClick={()=>editEntry(id)}/>
-              <Icon name="trash" bordered onClick={()=>deleteEntry(id)}/>
+              <Icon name="edit" bordered onClick={()=>dispatch(openModal(id))}/>
+              <Icon name="trash" bordered onClick={()=>dispatch(removeEntry(id))}/>
             </Grid.Column>
           </Grid.Row>
         </Grid>

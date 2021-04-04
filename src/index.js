@@ -2,11 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-
+import {store, persistor} from './redux/store'
+import {Provider} from 'react-redux'
+import {PersistGate} from 'redux-persist/es/integration/react'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-    <App />,
+  <Provider store={store}>
+  <PersistGate persistor={persistor}>
+  <App />
+  </PersistGate>
+  </Provider>,
   document.getElementById('root')
 );
 

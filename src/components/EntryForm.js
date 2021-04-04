@@ -2,12 +2,14 @@ import React from 'react'
 import {Form, Segment, Checkbox} from 'semantic-ui-react'
 
 const EntryForm = ({value, description, setDescription, setValue, isExpense, setIsExpense}) => {
+
     return (
         <>
         <Form.Group>
           <Form.Input 
           placeholder="Gym Fees" 
           icon='tags' 
+          type="text"
           width={12}
           value={description}
           onChange={(e)=>setDescription(e.target.value)}
@@ -16,6 +18,7 @@ const EntryForm = ({value, description, setDescription, setValue, isExpense, set
           <Form.Input 
           placeholder="100.00" 
           icon='dollar' 
+          type="number"
           width={4}
           value={value}
           onChange={(e)=>setValue(e.target.value)}
